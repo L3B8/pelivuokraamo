@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>{{ game.title }}</h2>
+{% if game.cover_image %}
+<img src="{{ game.cover_image.url }}" alt="{{ game.title }}" class="img-fluid mb-3">
+{% endif %}
+<p><strong>Alusta:</strong> {{ game.platform.name }}</p>
+<p><strong>Ikäraja:</strong> {{ game.age_rating }}+</p>
+<p><strong>Kuvaus:</strong> {{ game.description }}</p>
+<p><strong>Tila:</strong> {% if game.available %}Vapaa{% else %}Varattu{% endif %}</p>
+
+{% if user.is_authenticated and game.available %}
+<form method="post" action="{% url 'loan_game' game.pk %}">
+    {% csrf_token %}
+    <button class="btn btn-success">Vuokraa peli</button>
+</form>
+{% endif %}
+{% endblock %}

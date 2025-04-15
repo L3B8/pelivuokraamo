@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Omat lainat</h2>
+<ul class="list-group">
+    {% for loan in loans %}
+    <li class="list-group-item">
+        {{ loan.game.title }} ({{ loan.game.platform.name }}) – Alkaen {{ loan.loan_date|date:"d.m.Y" }}
+        {% if loan.returned_at %}
+        <span class="badge bg-success float-end">Palautettu</span>
+        {% else %}
+        <a href="{% url 'return_game' loan.pk %}" class="btn btn-sm btn-danger float-end">Palauta</a>
+        {% endif %}
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}

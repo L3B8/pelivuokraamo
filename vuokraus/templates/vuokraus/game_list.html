@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Pelilista</h2>
+<form method="get" class="mb-3">
+    <input type="text" name="q" placeholder="Haku" class="form-control mb-2" value="{{ request.GET.q }}">
+    <button type="submit" class="btn btn-primary">Hae</button>
+</form>
+<div class="row">
+    {% for game in games %}
+    <div class="col-md-4 mb-3">
+        <div class="card">
+            {% if game.cover_image %}
+            <img src="{{ game.cover_image.url }}" class="card-img-top" alt="{{ game.title }}">
+            {% endif %}
+            <div class="card-body">
+                <h5 class="card-title">{{ game.title }}</h5>
+                <p class="card-text">{{ game.platform.name }} | {{ game.age_rating }}+</p>
+                <a href="{% url 'game_detail' game.pk %}" class="btn btn-outline-primary">Tiedot</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
