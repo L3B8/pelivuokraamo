@@ -25,7 +25,7 @@ class Genre(models.Model):
 
 class Game(models.Model):
     title = models.CharField(max_length=200)
-    platform = models.ForeignKey(Platform, on_delete=models.CASCADE)
+    platform = models.ForeignKey(Platform, on_delete=models.CASCADE) # Vaihtaisin kaikkiin vastaaviin on_delete=models.RESTRICT t. Sami
     genre = models.ManyToManyField(Genre)
     age_rating = models.PositiveSmallIntegerField()
     cover_image = models.ImageField(upload_to='covers/', null=True, blank=True)
