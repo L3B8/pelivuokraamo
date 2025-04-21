@@ -25,7 +25,7 @@ class Genre(models.Model):
 
 class Game(models.Model):
     title = models.CharField(max_length=200)
-    platform = models.ForeignKey(Platform, on_delete=models.CASCADE) # Vaihtaisin kaikkiin vastaaviin on_delete=models.RESTRICT t. Sami
+    platform = models.ForeignKey(Platform, on_delete=models.RESTRICT) 
     genre = models.ManyToManyField(Genre)
     age_rating = models.PositiveSmallIntegerField()
     cover_image = models.ImageField(upload_to='covers/', null=True, blank=True)
@@ -46,8 +46,8 @@ class Game(models.Model):
 
 
 class Loan(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    game = models.ForeignKey(Game, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.RESTRICT)
+    game = models.ForeignKey(Game, on_delete=models.RESTRICT)
     loan_date = models.DateTimeField(auto_now_add=True)
     due_date = models.DateTimeField()
     returned_at = models.DateTimeField(null=True, blank=True)
