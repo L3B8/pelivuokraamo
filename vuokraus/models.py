@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
 from datetime import timedelta
+import os
 
 class Platform(models.Model):
     name = models.CharField(max_length=50, unique=True)
@@ -23,12 +24,20 @@ class Genre(models.Model):
         return self.name
 
 
+def cover_upload_path(instance, filename):
+    """
+    Tallennuspolku muodossa: covers/platform_nimi/tiedosto.jpg
+    """
+    platform_name = instance.platform.name.lower().replace(' ', '_')
+    return os.path.join('covers', platform_name, filename)
+
+
 class Game(models.Model):
     title = models.CharField(max_length=200)
-    platform = models.ForeignKey(Platform, on_delete=models.RESTRICT) 
+    platform = models.ForeignKey(Platform, on_delete=models.RESTRICT)
     genre = models.ManyToManyField(Genre)
     age_rating = models.PositiveSmallIntegerField()
-    cover_image = models.ImageField(upload_to='covers/', null=True, blank=True)
+    cover_image = models.ImageField(upload_to=cover_upload_path, null=True, blank=True)
     description = models.TextField()
 
     class Meta:
