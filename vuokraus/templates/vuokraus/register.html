@@ -1,9 +1,17 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
+{% load static %}
+
 {% block content %}
-<h2>Rekisteröidy</h2>
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button class="btn btn-success">Rekisteröidy</button>
-</form>
+<div class="form-container">
+    <img src="{% static 'images/logo.png' %}" class="logo" alt="Logo">
+    <h2>Luo käyttäjätili</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-success btn-block">Rekisteröidy</button>
+    </form>
+    <p class="text-center mt-3">
+        Onko sinulla jo tili? <a href="{% url 'login' %}">Kirjaudu sisään</a>
+    </p>
+</div>
 {% endblock %}

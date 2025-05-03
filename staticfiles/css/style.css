@@ -1,0 +1,29 @@
+/* Violetti teema */
+.bg-purple {
+    background-color: #6f42c1;
+    color: #fff;
+}
+.bg-purple h2 {
+    color: #fff;
+}
+.btn-purple {
+    background-color: #6f42c1;
+    border: none;
+    color: white;
+    transition: background-color 0.3s ease;
+}
+.btn-purple:hover {
+    background-color: #5936a2;
+}
+
+/* Lomake-ulkoasu */
+form input, form select, form textarea {
+    border-radius: 4px;
+}
+
+/* Responsiivisuus */
+@media (max-width: 576px) {
+    h2 {
+        font-size: 1.5rem;
+    }
+}
