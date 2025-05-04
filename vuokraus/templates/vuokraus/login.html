@@ -24,20 +24,6 @@
         Ei vielä tiliä? <a href="{% url 'register' %}">Rekisteröidy</a>
     </p>
 </div>
-
-<style>
-.password-wrapper {
-    position: relative;
-}
-.toggle-password {
-    position: absolute;
-    right: 10px;
-    top: 8px;
-    cursor: pointer;
-    user-select: none;
-}
-</style>
-
 <script>
 function togglePassword() {
     const passwordField = document.getElementById("id_password");

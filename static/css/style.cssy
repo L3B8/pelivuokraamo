@@ -66,15 +66,17 @@ input[type="submit"].btn-block:hover {
 /* Salasanakentän toggle-kuvake */
 .password-wrapper {
     position: relative;
-    
+    margin-bottom: 1rem;
 }
 
 .toggle-password {
-        position: absolute;
+    position: absolute;
     right: 10px;
-    top: 8px;
+    top: 50%;
+    transform: none;
     cursor: pointer;
     user-select: none;
+    font-size: 1.2rem;
 }
 
 .password-wrapper input[type="password"] {
