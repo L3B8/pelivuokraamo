@@ -17,7 +17,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
 
 
-        <div class="container">
+    <div class="container">
                         <span class="navbar-brand">🎮 Pelivuokraamo</span>
 
 
@@ -27,13 +27,13 @@
             </button>
             
             <div class="collapse navbar-collapse" id="navbarNav">
-   		 <ul class="navbar-nav ms-auto">
+   		     <ul class="navbar-nav ms-auto">
         		<!-- Pelivalikoima-nappi vasemmalle -->
         		<li class="nav-item me-2">
            			 <a class="btn btn-custom" href="{% url 'game_list' %}">Pelivalikoima</a>
        			 </li>
 
-        {% if user.is_authenticated %}
+                {% if user.is_authenticated %}
            		 <li class="nav-item me-2">
                			 <a class="btn btn-custom" href="{% url 'loan_history' %}">Omat lainat</a>
            		 </li>
@@ -43,18 +43,18 @@
                     <button class="btn btn-custom" type="submit">Kirjaudu ulos</button>
                 </form>
             </li>
-        {% else %}
+            {% else %}
             <li class="nav-item me-2">
                 <a class="btn btn-custom" href="{% url 'login' %}">Kirjaudu</a>
             </li>
             <li class="nav-item">
                 <a class="btn btn-custom" href="{% url 'register' %}">Rekisteröidy</a>
             </li>
-        {% endif %}
-    </ul>
-</div>
+            {% endif %}
+        </ul>
+    </div>
 
-        </div>
+</div>
     </nav>
 
     <main class="container py-4">
