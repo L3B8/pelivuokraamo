@@ -45,9 +45,11 @@ body {
 }
 
 /* Painikkeet */
+
+
 button.btn-block,
 input[type="submit"].btn-block {
-    background-color: #4a69bd;
+    background-color: #531674;
     color: white;
     border: none;
     padding: 12px;
@@ -60,7 +62,7 @@ input[type="submit"].btn-block {
 
 button.btn-block:hover,
 input[type="submit"].btn-block:hover {
-    background-color: #3b55a0;
+    background-color: #531674;
 }
 
 /* Salasanakentän toggle-kuvake */
@@ -148,7 +150,7 @@ input[type="submit"].btn-block:hover {
 }
 
 .navbar .btn-custom {
-    background-color: #6c63ff;
+    background-color: #531674;
     color: #fff;
     border: none;
     padding: 6px 14px;

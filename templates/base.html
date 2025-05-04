@@ -26,35 +26,34 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             
-            <!-- Navigaatiosisältö -->
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-		            <ul class="navbar-nav me-auto">
-                <!-- Pelivalikoima-nappi vasemmalle -->
-                <li class="nav-item me-2">
-                    <a class="btn btn-custom" href="{% url 'game_list' %}">Pelivalikoima</a>
-                </li>
-            </ul>
-                    {% if user.is_authenticated %}
-                        <li class="nav-item me-2">
-                            <a class="btn btn-custom" href="{% url 'loan_history' %}">Omat lainat</a>
-                        </li>
-                        <li class="nav-item">
-                            <form method="post" action="{% url 'logout' %}" class="d-inline">
-                                {% csrf_token %}
-                                <button class="btn btn-custom" type="submit">Kirjaudu ulos</button>
-                            </form>
-                        </li>
-                    {% else %}
-                        <li class="nav-item me-2">
-                            <a class="btn btn-custom" href="{% url 'login' %}">Kirjaudu</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="btn btn-custom" href="{% url 'register' %}">Rekisteröidy</a>
-                        </li>
-                    {% endif %}
-                </ul>
-            </div>
+   		 <ul class="navbar-nav ms-auto">
+        		<!-- Pelivalikoima-nappi vasemmalle -->
+        		<li class="nav-item me-2">
+           			 <a class="btn btn-custom" href="{% url 'game_list' %}">Pelivalikoima</a>
+       			 </li>
+
+        {% if user.is_authenticated %}
+           		 <li class="nav-item me-2">
+               			 <a class="btn btn-custom" href="{% url 'loan_history' %}">Omat lainat</a>
+           		 </li>
+            <li class="nav-item">
+               	<form method="post" action="{% url 'logout' %}" class="d-inline">
+                    {% csrf_token %}
+                    <button class="btn btn-custom" type="submit">Kirjaudu ulos</button>
+                </form>
+            </li>
+        {% else %}
+            <li class="nav-item me-2">
+                <a class="btn btn-custom" href="{% url 'login' %}">Kirjaudu</a>
+            </li>
+            <li class="nav-item">
+                <a class="btn btn-custom" href="{% url 'register' %}">Rekisteröidy</a>
+            </li>
+        {% endif %}
+    </ul>
+</div>
+
         </div>
     </nav>
 
