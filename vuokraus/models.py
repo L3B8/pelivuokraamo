@@ -25,9 +25,7 @@ class Genre(models.Model):
 
 
 def cover_upload_path(instance, filename):
-    """
-    Tallennuspolku muodossa: covers/platform_nimi/tiedosto.jpg
-    """
+ 
     platform_name = instance.platform.name.lower().replace(' ', '_')
     return os.path.join('covers', platform_name, filename)
 

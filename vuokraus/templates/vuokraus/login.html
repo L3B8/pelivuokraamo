@@ -2,16 +2,49 @@
 {% load static %}
 
 {% block content %}
+
 <div class="form-container">
-    <img src="{% static 'images/logo.png' %}" class="logo" alt="Logo">
+    <img src="{% static 'logo2.png' %}" alt="Logo" class="logo-img">
+
     <h2>Kirjaudu</h2>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" class="btn btn-primary btn-block">Kirjaudu</button>
-    </form>
+<form method="post">
+    {% csrf_token %}
+
+    {{ form.username.label_tag }} {{ form.username.errors }} {{ form.username }}
+
+    <label for="id_password">Salasana:</label>
+    <div class="password-wrapper">
+        <input type="password" name="password" id="id_password" required>
+        <span class="toggle-password" onclick="togglePassword()">👁</span>
+    </div>
+
+    <button type="submit" class="btn btn-primary btn-block">Kirjaudu</button>
+</form>
     <p class="text-center mt-3">
         Ei vielä tiliä? <a href="{% url 'register' %}">Rekisteröidy</a>
     </p>
 </div>
+
+<style>
+.password-wrapper {
+    position: relative;
+}
+.toggle-password {
+    position: absolute;
+    right: 10px;
+    top: 8px;
+    cursor: pointer;
+    user-select: none;
+}
+</style>
+
+<script>
+function togglePassword() {
+    const passwordField = document.getElementById("id_password");
+    const type = passwordField.getAttribute("type") === "password" ? "text" : "password";
+    passwordField.setAttribute("type", type);
+}
+</script>
+
 {% endblock %}
+

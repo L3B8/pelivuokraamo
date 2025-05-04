@@ -16,11 +16,35 @@ body {
     box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
 }
 
-/* Logo lomakkeessa */
-.form-container .logo {
+.navbar-brand {
+    user-select: none;       
+    pointer-events: none;    
+}
+
+.search-box {
+        pointer-events: auto;
+    }
+
+    
+
+
+.search-box input,
+.search-box button {
+        pointer-events: all;
+    }
+
+
+.navbar-dark {
+    background-color: black !important;
+}
+
+
+.logo-img {
+    width: 340px;
+    height: auto;
+    max-width: 100%;
     display: block;
-    max-width: 80px;
-    margin: 0 auto 20px;
+    margin: 0 auto 20px auto;
 }
 
 /* Otsikko */

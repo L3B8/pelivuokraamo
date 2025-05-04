@@ -1,8 +1,9 @@
 {% extends 'base.html' %}
 {% block content %}
-<h2 class="mb-4"> Pelilista</h2>
+<h2 class="mb-4">Pelivalikoima</h2>
+
 <form method="get" class="input-group mb-4 search-box">
-    <input type="text" name="q" placeholder=" Hae peleistä" class="form-control" value="{{ request.GET.q }}">
+    <input type="text" name="q" placeholder="Hae peleistä" class="form-control" value="{{ request.GET.q }}">
     <button type="submit" class="btn btn-primary">Hae</button>
 </form>
 
@@ -11,12 +12,15 @@
     <div class="col-md-4 mb-4 d-flex align-items-stretch">
         <div class="card shadow-sm w-100">
             {% if game.cover_image %}
-            <img src="{{ game.cover_image.url }}" class="card-img-top" alt="{{ game.title }}" style="height: 200px; object-fit: cover;">
+                        <img src="{{ game.cover_image.url }}" class="card-img-top" alt="{{ game.title }}" style="height: 200px; object-fit: cover;">
+
+
+
             {% endif %}
             <div class="card-body d-flex flex-column">
                 <h5 class="card-title">{{ game.title }}</h5>
                 <p class="text-muted">{{ game.platform.name }} | {{ game.age_rating }}+</p>
-                <a href="{% url 'game_detail' game.pk %}" class="btn btn-outline-primary mt-auto">Tiedot</a>
+                <a href="{% url 'game_detail' game.pk %}" class="btn btn-outline-primary mt-auto">Lisätietoja</a>
             </div>
         </div>
     </div>
@@ -25,3 +29,4 @@
     {% endfor %}
 </div>
 {% endblock %}
+

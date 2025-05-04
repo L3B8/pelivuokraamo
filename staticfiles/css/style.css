@@ -1,29 +1,191 @@
-/* Violetti teema */
-.bg-purple {
-    background-color: #6f42c1;
-    color: #fff;
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f5f6fa;
+    margin: 0;
+    padding: 0;
 }
-.bg-purple h2 {
-    color: #fff;
+
+
+.form-container {
+    max-width: 400px;
+    margin: 60px auto;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
 }
-.btn-purple {
-    background-color: #6f42c1;
-    border: none;
+
+.navbar-brand {
+    user-select: none;       
+    pointer-events: none;    
+}
+
+.search-box {
+        pointer-events: auto;
+    }
+
+    
+
+
+.search-box input,
+.search-box button {
+        pointer-events: all;
+    }
+
+
+.navbar-dark {
+    background-color: black !important;
+}
+
+
+.logo-img {
+    width: 340px;
+    height: auto;
+    max-width: 100%;
+    display: block;
+    margin: 0 auto 20px auto;
+}
+
+/* Otsikko */
+.form-container h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: 1.8rem;
+    color: #333333;
+}
+
+
+.form-container form input[type="text"],
+.form-container form input[type="password"],
+.form-container form input[type="email"] {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+
+
+button.btn-block,
+input[type="submit"].btn-block {
+    background-color: #4a69bd;
     color: white;
+    border: none;
+    padding: 12px;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
     transition: background-color 0.3s ease;
 }
-.btn-purple:hover {
-    background-color: #5936a2;
+
+button.btn-block:hover,
+input[type="submit"].btn-block:hover {
+    background-color: #3b55a0;
 }
 
-/* Lomake-ulkoasu */
-form input, form select, form textarea {
-    border-radius: 4px;
+.navbar .btn-custom {
+    background-color: #6c63ff;
+    color: #fff;
+    border: none;
+    padding: 6px 14px;
+    font-size: 0.9rem;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    margin-left: 0.5rem;
 }
 
-/* Responsiivisuus */
+/* Painikkeiden hover/active/ focus */
+.navbar .btn-custom:hover {
+    background-color: #5a54e5;
+    transform: translateY(-1px);
+}
+
+.navbar .btn-custom:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(108, 99, 255, 0.4);
+}
+
+
+.form-container p {
+    text-align: center;
+    font-size: 0.95rem;
+}
+
+.form-container a {
+    color: #4a69bd;
+    text-decoration: none;
+}
+
+.form-container a:hover {
+    text-decoration: underline;
+}
+
+
+.search-box {
+    border: 2px solid #6c63ff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(108, 99, 255, 0.1);
+    padding: 8px;
+    background-color: #fff;
+}
+
+.search-box input.form-control {
+    border: none;
+    box-shadow: none;
+    font-size: 1rem;
+}
+
+.search-box input::placeholder {
+    color: #999;
+}
+
+.search-box .btn {
+    border-radius: 6px;
+}
+
+
+
+.form-container ul {
+    padding-left: 20px;
+    font-size: 0.9rem;
+    color: #444;
+}
+
+.badge-large {
+    font-size: 1rem;        
+    padding: 0.6em 1em;     
+    border-radius: 0.6rem; 
+}
+
+
 @media (max-width: 576px) {
-    h2 {
+    .form-container {
+        padding: 20px;
+        margin: 30px 10px;
+    }
+
+    .form-container h2 {
         font-size: 1.5rem;
+    }
+
+    .navbar .btn-custom {
+        display: block;
+        width: 100%;
+        margin: 6px 0;
+        text-align: center;
+    }
+
+    .navbar-nav {
+        width: 100%;
+    }
+
+    .navbar-nav .nav-item {
+        width: 100%;
+        text-align: center;
     }
 }

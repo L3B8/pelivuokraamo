@@ -3,15 +3,65 @@
 
 {% block content %}
 <div class="form-container">
-    <img src="{% static 'images/logo.png' %}" class="logo" alt="Logo">
     <h2>Luo käyttäjätili</h2>
-    <form method="post">
+    <form method="post" autocomplete="off">
         {% csrf_token %}
-        {{ form.as_p }}
+
+        {{ form.username.label_tag }}
+        {{ form.username.errors }}
+        {{ form.username }}
+
+        {{ form.email.label_tag }}
+        {{ form.email.errors }}
+        {{ form.email }}
+
+        <label for="id_password1">Salasana:</label>
+        {{ form.password1.errors }}
+        {{ form.password1.help_text }}
+        <div class="password-wrapper">
+            {{ form.password1 }}
+            <span class="toggle-password" onclick="togglePassword('id_password1')">👁</span>
+        </div>
+
+        <label for="id_password2">Salasana uudelleen:</label>
+        {{ form.password2.errors }}
+        {{ form.password2.help_text }}
+        <div class="password-wrapper">
+            {{ form.password2 }}
+            <span class="toggle-password" onclick="togglePassword('id_password2')">👁</span>
+        </div>
+
         <button type="submit" class="btn btn-success btn-block">Rekisteröidy</button>
     </form>
-    <p class="text-center mt-3">
-        Onko sinulla jo tili? <a href="{% url 'login' %}">Kirjaudu sisään</a>
-    </p>
 </div>
+
+<style>
+.form-container {
+    max-width: 400px;
+    margin: auto;
+    padding: 1.5rem;
+}
+.password-wrapper {
+    position: relative;
+    margin-bottom: 1rem;
+}
+.toggle-password {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    user-select: none;
+}
+</style>
+
+<script>
+function togglePassword(fieldId) {
+    const field = document.getElementById(fieldId);
+    if (!field) return;
+    const type = field.getAttribute("type") === "password" ? "text" : "password";
+    field.setAttribute("type", type);
+}
+</script>
 {% endblock %}
+
