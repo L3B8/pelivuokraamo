@@ -5,8 +5,13 @@
     {% for loan in loans %}
     <li class="list-group-item d-flex justify-content-between align-items-center">
         <div>
-            {{ loan.game.title }} ({{ loan.game.platform.name }}) – Alkaen {{ loan.loan_date|date:"d.m.Y" }}{% if loan.returned_at %} - Päättyen {{ loan.returned_at|date:"d.m.Y" }}{% endif %}
-
+            {{ loan.game.title }} ({{ loan.game.platform.name }}) – 
+            Alkaen {{ loan.loan_date|date:"d.m.Y" }} 
+            {% if loan.returned_at %}
+                – Palautettu {{ loan.returned_at|date:"d.m.Y" }}
+            {% else %}
+                – Palautettava viimeistään {{ loan.due_date|date:"d.m.Y" }}
+            {% endif %}
         </div>
         <div>
             {% if loan.returned_at %}
@@ -19,3 +24,4 @@
     {% endfor %}
 </ul>
 {% endblock %}
+

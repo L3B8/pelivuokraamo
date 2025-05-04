@@ -25,9 +25,20 @@
                 </p>
 
                 {% if user.is_authenticated and game.available %}
-                <form method="post" action="{% url 'loan_game' game.pk %}">
+                    <form method="post" action="{% url 'loan_game' game.pk %}">
+			
                     {% csrf_token %}
-                    <button class="btn btn-success mt-3">Vuokraa peli</button>
+			<div class="mb-3">
+
+	                	 <label for="loan_period">Laina-aika:</label>
+        	          	 <select name="loan_period" class="form-select w-auto d-inline-block ms-2" required>
+                	  	  <option value="7">1 viikko</option>
+                           	  <option value="14">2 viikkoa</option>
+                           	  <option value="21">3 viikkoa</option>
+                           	  <option value="28">4 viikkoa</option>
+                          </select>
+			</div>
+                    <button class="btn btn-success mt-3 ms-2">Vuokraa peli</button>
                 </form>
                 {% endif %}
             </div>
