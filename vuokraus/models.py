@@ -8,6 +8,8 @@ class Platform(models.Model):
     name = models.CharField(max_length=50, unique=True)
 
     class Meta:
+        verbose_name = "Alusta"
+        verbose_name_plural = "Alustat"
         indexes = [models.Index(fields=["name"])]
 
     def __str__(self):
@@ -18,6 +20,8 @@ class Genre(models.Model):
     name = models.CharField(max_length=50, unique=True)
 
     class Meta:
+        verbose_name = "Genre"
+        verbose_name_plural = "Genret"
         indexes = [models.Index(fields=["name"])]
 
     def __str__(self):
@@ -31,14 +35,16 @@ def cover_upload_path(instance, filename):
 
 
 class Game(models.Model):
-    title = models.CharField(max_length=200)
-    platform = models.ForeignKey(Platform, on_delete=models.RESTRICT)
-    genre = models.ManyToManyField(Genre)
-    age_rating = models.PositiveSmallIntegerField()
-    cover_image = models.ImageField(upload_to=cover_upload_path, null=True, blank=True)
-    description = models.TextField()
+    title = models.CharField(max_length=200, verbose_name="Pelin nimi")
+    platform = models.ForeignKey(Platform, on_delete=models.RESTRICT, verbose_name="Alusta")
+    genre = models.ManyToManyField(Genre,verbose_name="Genre")
+    age_rating = models.PositiveSmallIntegerField(verbose_name="Ikäraja")
+    cover_image = models.ImageField(upload_to=cover_upload_path, null=True, blank=True, verbose_name="kansikuva")
+    description = models.TextField(verbose_name="Kuvaus")
 
     class Meta:
+        verbose_name = "Peli"
+        verbose_name_plural = "Pelit"
         indexes = [
             models.Index(fields=["title"]),
             models.Index(fields=["platform"]),
@@ -53,13 +59,15 @@ class Game(models.Model):
 
 
 class Loan(models.Model):
-    user = models.ForeignKey(User, on_delete=models.RESTRICT)
-    game = models.ForeignKey(Game, on_delete=models.RESTRICT)
-    loan_date = models.DateTimeField(auto_now_add=True)
-    due_date = models.DateTimeField()
-    returned_at = models.DateTimeField(null=True, blank=True)
+    user = models.ForeignKey(User, on_delete=models.RESTRICT, verbose_name="Käyttäjä")
+    game = models.ForeignKey(Game, on_delete=models.RESTRICT, verbose_name="Peli")
+    loan_date = models.DateTimeField(auto_now_add=True, verbose_name="Lainauspäivä")
+    due_date = models.DateTimeField(verbose_name="Eräpäivä")
+    returned_at = models.DateTimeField(null=True, blank=True, verbose_name="Palautuspäivä")
 
     class Meta:
+        verbose_name="Laina"
+        verbose_name_plural = "Lainat"
         indexes = [
             models.Index(fields=["user"]),
             models.Index(fields=["game"]),
